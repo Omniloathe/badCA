@@ -3,6 +3,7 @@ A poor construction of a 2D cellular automata simulator+viewer
  Currently uses mouse to start/stop
  */
 
+
 public void arrCopy2D(int[][] orig,int[][] copy)
 {
   copy=new int[orig.length][orig[0].length];
@@ -11,6 +12,7 @@ public void arrCopy2D(int[][] orig,int[][] copy)
       arrayCopy(orig[i],copy[i]);
   }
 }
+
 
     public class CA2
     {
@@ -65,6 +67,10 @@ public void arrCopy2D(int[][] orig,int[][] copy)
         gen++;
       }
       
+      public void prevGen()
+      {
+        //need to figure out how to calculate previous state
+      }
 
       public void print()
       {
@@ -112,7 +118,7 @@ public void arrCopy2D(int[][] orig,int[][] copy)
     boolean play;
     float cellsize;
     color bgcolor;
-
+    
     void setup()
     {
       size(800, 800);
@@ -130,16 +136,17 @@ public void arrCopy2D(int[][] orig,int[][] copy)
       {
         background(bgcolor);
         myCA.display(cellsize);
-        myCA.print();
+        //myCA.print();
         myCA.nextGen();
-        delay(2000);
+        delay(1000);
       }
     }
 
     void mousePressed()
     {
-      if (play) play=false;
-      else play=true;
+      /*play= play ? false : true;
+      even easier way lol */
+      play=!play;
     }
     
     void keyPressed()
