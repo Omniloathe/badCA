@@ -1,10 +1,4 @@
-/* //<>//
-A poor construction of a 2D cellular automata simulator+viewer
- Currently uses mouse to start/stop
- */
-
-
-public void arrCopy2D(int[][] orig,int[][] copy)
+public void arrCopy2D(int[][] orig,int[][] copy) //<>//
 {
   copy=new int[orig.length][orig[0].length];
   for (int i=0; i<orig.length; i++)
@@ -112,56 +106,4 @@ public void arrCopy2D(int[][] orig,int[][] copy)
         arrCopy2D(this.first,this.cells);
       }
       
-    }
-
-    CA2 myCA;
-    boolean play;
-    float cellsize;
-    color bgcolor;
-    
-    void setup()
-    {
-      size(800, 800);
-      bgcolor=color(255);
-      int[][] seed={{0, 0, 0, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}}; //spinner
-      myCA=new CA2(seed);
-      play=false;
-      cellsize=40;
-      
-    }
-
-    void draw()
-    {
-      if (play)
-      {
-        background(bgcolor);
-        myCA.display(cellsize);
-        //myCA.print();
-        myCA.nextGen();
-        delay(1000);
-      }
-    }
-
-    void mousePressed()
-    {
-      /*play= play ? false : true;
-      even easier way lol */
-      play=!play;
-    }
-    
-    void keyPressed()
-    {
-      switch(key)
-      {
-        case 'r':
-        case 'R':
-        play=false;
-        myCA.reset();
-        background(bgcolor);
-        myCA.display(cellsize);
-        myCA.print();
-        break;
-        default:
-        break;
-      }
     }
