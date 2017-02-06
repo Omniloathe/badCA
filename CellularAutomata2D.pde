@@ -15,6 +15,7 @@ import g4p_controls.*;
     boolean play;
     float cellsize;
     color bgcolor;
+    float maxcellsize;
     
    void setup()
     {
@@ -26,7 +27,9 @@ import g4p_controls.*;
       myCA=new CA2(seed);
       play=false;
       cellsize=40;
+      maxcellsize = ((height-100)/myCA.cells.length < width/myCA.cells[0].length) ? (height-100)/myCA.cells.length : width/myCA.cells[0].length;
       frameRate(10);
+      scaleslider.setLimits(0,maxcellsize);
       
     }
 
@@ -34,6 +37,7 @@ import g4p_controls.*;
     {
       background(bgcolor);
       myCA.display(cellsize);
+      genlabel.setText("Gen: "+str(myCA.getGen()));
       if (play && frameCount%10==0)
       {
         myCA.print();

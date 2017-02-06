@@ -1,8 +1,10 @@
 # badCA
 
 Features to add:
-Draw support (obviously)
 Visual indication of previous cell state
 Randomly generated seeds
 Reading seeds from file
-GUI 
+Drawing seeds in real-time
+
+Bugs to fix:
+Reset not triggering redraw

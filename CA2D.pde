@@ -99,6 +99,11 @@ public void arrCopy2D(int[][] orig,int[][] copy) //<>//
       {
         return this.cells[i][j];
       }
+      
+      public int getGen()
+      {
+        return this.gen;
+      }
 
       public void reset()
       {

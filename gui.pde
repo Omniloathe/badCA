@@ -26,6 +26,11 @@ public void stop_click(GButton source, GEvent event) { //_CODE_:stop_button:6428
   play=false;
 } //_CODE_:stop_button:642813:
 
+public void scale_change(GSlider source, GEvent event) { //_CODE_:scaleslider:203195:
+  sliderlabel.setText(scaleslider.getValueS());
+  cellsize=scaleslider.getValueF();
+} //_CODE_:scaleslider:203195:
+
 
 
 // Create all the GUI controls. 
@@ -35,7 +40,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setCursor(ARROW);
   surface.setTitle("Sketch Window");
-  reset_button = new GButton(this, 542, 750, 80, 30);
+  reset_button = new GButton(this, 508, 745, 80, 30);
   reset_button.setText("Reset");
   reset_button.setTextBold();
   reset_button.addEventHandler(this, "reset_click");
@@ -44,11 +49,25 @@ public void createGUI(){
   play_button.setTextBold();
   play_button.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   play_button.addEventHandler(this, "play_click");
-  stop_button = new GButton(this, 374, 751, 80, 30);
+  stop_button = new GButton(this, 360, 753, 80, 30);
   stop_button.setText("Stop");
   stop_button.setTextBold();
   stop_button.setLocalColorScheme(GCScheme.RED_SCHEME);
   stop_button.addEventHandler(this, "stop_click");
+  genlabel = new GLabel(this, 55, 737, 80, 45);
+  genlabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  genlabel.setText("Gen");
+  genlabel.setTextBold();
+  genlabel.setOpaque(false);
+  scaleslider = new GSlider(this, 654, 740, 100, 40, 10.0);
+  scaleslider.setLimits(0.5, 0.0, 1.0);
+  scaleslider.setNumberFormat(G4P.DECIMAL, 2);
+  scaleslider.setOpaque(false);
+  scaleslider.addEventHandler(this, "scale_change");
+  sliderlabel = new GLabel(this, 664, 729, 80, 20);
+  sliderlabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  sliderlabel.setText("My label");
+  sliderlabel.setOpaque(false);
 }
 
 // Variable declarations 
@@ -56,3 +75,6 @@ public void createGUI(){
 GButton reset_button; 
 GButton play_button; 
 GButton stop_button; 
+GLabel genlabel; 
+GSlider scaleslider; 
+GLabel sliderlabel; 
